@@ -4,12 +4,16 @@
 
 package tech.ndongoel.studentmanager.handler;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
-import tech.ndongoel.studentmanager.entity.Employee;
 import tech.ndongoel.studentmanager.services.EmployeeServices;
 
 @Component
@@ -19,7 +23,7 @@ public class EmployeeHandler {
     private final EmployeeServices employeeService;
 
 
-    public  Mono<ServerResponse> getAll(ServerRequest req) {
+    public Mono<ServerResponse> findAll() {
         return ServerResponse.ok().bodyValue(this.employeeService.getAll());
     }
 }
